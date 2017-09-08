@@ -1,0 +1,83 @@
+<ion-modal-view style="background-color: white">
+  <ion-header-bar>
+    <h1 class = "title">INFO</h1>
+    <i class = "button icon icon-right ion-ios-close-outline"
+            ng-click = "closeModal()"></i>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-scroll>
+
+      <div class="row" >
+        <div class="item item-image" style="height: 200px; background-color: #0a9dc7">
+          <img ng-src="{{baseImage_url+productDetails.product_images[0].image_name}}"
+               style="height: 200px; width:auto">
+        </div>
+      </div>
+      <div class="row">
+        <h4 style="color: grey">Nutritional info</h4>
+      </div>
+      <div class="row" style="border: 1px solid grey;border-radius: 25px">
+        <h4 style="color: grey">Serving Size: {{productDetails.productMetaData.serving_size}}</h4>
+      </div>
+      <div class="row">
+        <h4 style="color: grey">Special Diet</h4>
+      </div>
+      <div style="border: 1px solid grey;border-radius: 25px">
+        <div class="row">
+          <h4 ng-hide="product_feature.alcoholic_beverage_only" style="color: grey">Non Alcoholic</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.alcoholic_beverage_only" style="color: grey">Non Alcoholic</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.contain_beef" style="color: grey">No Beef Contents</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.contains_poultry_only" style="color: grey">No Poultry Contents</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.contains_seafood_only" style="color: grey">No See Food Contents</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.on_kids_menu_only" style="color: grey">Non Kid Menu</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.on_breakfast_menu_only" style="color: grey">Non Breakfast Menu</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.kosher" style="color: grey">No Kosher Contents</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.halal" style="color: grey">No Halal</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.is_vegetarian" style="color: grey">Non Vegetairian</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.gluten_free" style="color: grey">Gluten Content Present</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.lactose_free" style="color: grey">Lactose Content Present</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.vegan" style="color: grey">Non Vegan</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.low_carb" style="color: grey">Non Low Carbohydrates</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.high_fibre" style="color: grey">Non High Fibre</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.low_GI" style="color: grey">Non Low GI</h4>
+        </div>
+        <div class="row">
+          <h4 ng-hide="product_feature.nut_free" style="color: grey">Nut Content Present</h4>
+        </div>
+
+
+      </div>
+    </ion-scroll>
+  </ion-content>
+</ion-modal-view>

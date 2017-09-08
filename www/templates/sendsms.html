@@ -1,0 +1,21 @@
+<ion-view view-title="Send Sms">
+
+  <ion-content>
+      <div class="list"style="margin-top: 100px">
+        <label class="item item-input">
+          <span class="input-label">TO</span>
+          <input type="text" ng-model="to">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Sms</span>
+          <input type="text" ng-model="sms">
+        </label>
+        <button class="button button-positive"
+                style="margin-left: 200px; margin-top: 10px"
+                ng-click="sendSms()">
+          Send
+        </button>
+      </div>
+
+  </ion-content>
+</ion-view>

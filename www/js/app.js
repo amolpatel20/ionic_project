@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers','ngCordova','ion-google-autocomplete', 'tabSlideBox'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -36,7 +36,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/search',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/search.html',
+        controller:'SearchCtrl'
       }
     }
   })
@@ -45,7 +46,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/browse',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/browse.html',
+          controller :'BowerCtrl'
         }
       }
     })
@@ -67,7 +69,122 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'PlaylistCtrl'
       }
     }
-  });
+    })
+.state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
+      }
+    }
+  })
+    .state('app.forgotpassword', {
+      url: '/forgotpassword',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/forgotpassword.html',
+          controller: 'ForgotPassCtrl'
+        }
+      }
+    })
+    .state('app.register', {
+      url: '/register',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/register.html',
+          controller: 'RegisterCtrl'
+        }
+      }
+    })
+    .state('app.takepicture',{
+      url:'/takepicture',
+      views :{
+        'menuContent':{
+          templateUrl:'templates/take_picture.html',
+          controller :'TakePictureCtrl'
+        }
+      }
+    })
+    .state('app.contacts',{
+    url:'/contacts',
+    views :{
+      'menuContent':{
+        templateUrl:'templates/contacts.html',
+        controller :'ContactsCtrl'
+      }
+    }
+  })
+    .state('app.sendsms',{
+      url:'/sendsms',
+      params: {
+        'to':'to'
+      },
+      views :{
+        'menuContent':{
+          templateUrl:'templates/sendsms.html',
+          controller :'SendsmsCtrl'
+        }
+      }
+    })
+    .state('app.restaurant-list',{
+      url:'/restaurant-list',
+      views :{
+        'menuContent':{
+          templateUrl:'templates/restaurant-list.html',
+          controller :'RestaurantListCtrl'
+        }
+      }
+    })
+    .state('app.restaurant-details',{
+      url:'/restaurant-details',
+      params:{
+        'id':'id',
+        'lat':'lat',
+        'long':'long',
+        'restaurantName':'restaurantName'
+      },
+      views :{
+        'menuContent':{
+          templateUrl:'templates/restaurant-details.html',
+          controller :'RestaurantDetailsCtrl'
+        }
+      }
+    })
+    .state('app.search-place',{
+      url:'/search-place',
+      views:{
+        'menuContent':{
+          templateUrl:'/templates/search-place.html',
+          controller:'SearchPlace',
+
+        }
+      }
+    })
+    .state('app.confirm-order',{
+      url:'/confirm-order',
+      params: {
+        selectedProducts: 'selectedProducts',
+        delivery_charges:'delivery_charges',
+        wholeTotal:'wholeTotal'
+      },
+      views:{
+        'menuContent':{
+          templateUrl:'/templates/confirm-order.html',
+          controller:'ConfirmOrderCtrl'
+        }
+      }
+    })
+    .state('app.payment',{
+      url:'/payment',
+
+      views:{
+        'menuContent':{
+          templateUrl:'/templates/payment.html',
+          controller:'PaymentCtrl'
+        }
+      }
+    });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/login');
 });

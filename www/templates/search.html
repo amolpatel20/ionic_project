@@ -1,5 +1,34 @@
 <ion-view view-title="Search">
   <ion-content>
-    <h1>Search</h1>
-  </ion-content>
+    <div class="bar bar-header">
+      <button class="button"
+      ng-click="searchRestaurant()">Search</button>
+      <h1 class="title"></h1>
+      <button class="button">Edit</button>
+    </div>
+
+        <div class="list card" ng-repeat="flick in flicks">
+
+            <div class="item item-avatar">
+                <img ng-src="{{flick_image_baseUrl+flick.captured_image}}">
+                <h4>{{flick.sender_first_name}}</h4>
+                <p>{{flick.created | date}}</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image"
+                     ng-src="{{flick_sender_pic_baseUrl+flick.sender_image}}"
+                      height="300">
+
+                <p>
+                  <a href="#" class="subdued">{{flick.total_like}} Like</a>
+                  <a href="#" class="subdued">{{flick.total_comment}} Comments</a>
+                </p>
+            </div>
+            <div class="item">
+                <h6>{{flick.message}}</h6>
+            </div>
+
+        </div>
+    </ion-content>
 </ion-view>

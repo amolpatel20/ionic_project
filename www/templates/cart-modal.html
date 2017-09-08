@@ -1,0 +1,31 @@
+
+<ion-modal-view style="background-color: white">
+  <ion-header-bar>
+    <h1 class = "title"></h1>
+    <i class = "button icon icon-right ion-ios-close-outline"
+       ng-click = "closeCartModal()"></i>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="row">
+      <button class="button button-outline button-stable"
+              style="border-radius: 20px; border-color: green; width: 250px; margin-top: 100px;margin-left: 70px"
+              ng-click="goToConfirmOrder()">
+        DELIVERY
+      </button>
+
+    </div>
+    <div class="row">
+      <button class="button button-outline button-stable" style="border-radius: 20px; border-color: green; width: 250px; margin-top: 100px; margin-left: 70px">
+        PICK UP
+      </button>
+
+    </div>
+    <div class="row">
+      <button class="button button-outline button-stable" style="border-radius: 20px; border-color: green; width: 250px; margin-top: 100px; margin-left: 70px">
+        DINE IN
+      </button>
+
+    </div>
+  </ion-content>
+</ion-modal-view>

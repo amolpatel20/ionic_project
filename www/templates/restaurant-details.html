@@ -1,0 +1,289 @@
+<ion-view view-title="Restaurant Details">
+  <ion-nav-buttons side="right">
+    <h5 style="margin-right: 10px">{{currency_symbol}} {{total+totalStarter}}</h5>
+
+    <i class="icon ion-ios-cart-outline"
+       style="color: #28a54c; font-size: 20px;margin-top: 10px;margin-right: 10px"
+      ng-show="cartFlag"
+      ng-click="showCartModal()"></i>
+  </ion-nav-buttons>
+  <ion-content>
+
+    <div class="list">
+      <a class="item item-avatar">
+        <img ng-src="{{imageName ? restaurant_base_url+restaurant_image : 'img/ionic.png'}}">
+        <div>
+          <div class="row">
+            <div class="col-50">
+              <h3>{{restaurantName}}</h3>
+            </div>
+            <div class="col-33 col-offset-25">
+              <button class="button button-outline button-balanced button-small">
+                No Rating
+              </button>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="row">
+      <a class="item item-image"
+         style="height:200px; width:100%">
+        <img ng-src="{{restaurant_image ? restaurant_base_url+restaurant_image : 'img/ionic.png'}}"
+             style="height:200px; width:100%">
+      </a>
+    </div>
+    <div class="button-bar">
+      <a class="button"
+         ng-class="{ active: isSet(1) }"
+         id="tab1"
+         ng-click="setTab(1)"
+          >INFO</a>
+      <a class="button"
+         id="tab2"
+          ng-class="{ active :isSet(2)}"
+          ng-click="setTab(2)">MEMU</a>
+    </div>
+
+    <div class="list" ng-show="isSet(1)">
+        <div class="item">
+          <div class="row">
+            <div class="row">
+              <div class="col-33">
+                Address
+              </div>
+              <div class="col-10">
+                <i class="ion-ios-location-outline">
+                </i></div>
+            </div>
+
+          </div>
+          <div class="row">
+            {{restaurant.address}}
+          </div>
+          <div class="row">
+            <div class="col-40">
+              <div>
+                Opening Hours:
+              </div>
+
+            </div>
+            <div class="col-60">
+              <div class="row">
+                Open
+              </div>
+              <div class="row">
+                {{restaurant.open_at_str}} to {{restaurant.close_at_str}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-33">
+              Phone:
+            </div>
+            <div class="col-50 col-offset-10">
+              {{restaurant.contact_no}}
+            </div>
+            <div class="col-10">
+              <i class="icon ion-ios-telephone-outline" style="color: #28a54c"></i>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="row">
+            <div class="input-border">
+              <input type="text"
+                     google-autocomplete-suggestion
+                     location="data.location"
+                     country-code="{{countryCode}}"
+                     on-selection="onAddressSelection(location)"
+                     placeholder="Enter your delivery location"
+                     ng-model="data.location.formatted_address"
+                     readonly required
+                     class="input-border">
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            Delivery Zone
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <button class="button button-assertive button-small">
+              {{deliveryStatus}}
+            </button>
+          </div>
+
+        </div>
+        <div class="item">
+          <div class="row">
+            <div class="col-33 col-offset-10">
+              <button class="button button-outline button-stable button-small button-border">
+                Near You
+              </button>
+            </div>
+            <div class="col-33">
+              <button class="button button-outline button-stable button-small button-border">
+                Following
+              </button>
+            </div>
+            <div class="col-33">
+              <button class="button button-outline button-stable button-small button-border">
+                Check In
+              </button>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <div class="col-33 col-offset-10">
+              {{restaurant.no_of_reviews}} Flick
+            </div>
+            <div class="col-33">
+              {{restaurant.no_of_followers}} Followers
+            </div>
+            <div class="col-33">
+              {{restaurant.no_of_check_in}} Check In
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row" ng-show="isSet(2)">
+      <div class="row" style="color: gray">
+        <div class="col">
+          <tab-slide-box>
+            <div class="tsb-icons"
+                 style="width:100%">
+              <div class="tsb-ic-wrp"
+                   style="width: 100%">
+                <ion-scroll direction="x" class="tsb-hscroll"
+                  style="width: 100%">
+                  <a href="javascript:;"
+                     class="{{tab.icon}}"
+                     ng-repeat="product_category in product_categories track by $index"
+                     on-finish-render="test()"
+                     ng-class="{ active: isSetSubTab($index) }"
+                     ng-click="setSubTab($index,product_category)">{{product_category.product_category_name}}
+
+                  </a>
+                </ion-scroll>
+              </div>
+            </div>
+
+            <div class="item" ng-repeat="product in products">
+              <div class="row">
+                <div class="col-33 col-offset-10">{{product.product_name}} <i class="ion-fireball" style="color: red; font-size: 20px"></i></div>
+
+                <div class="col-33 col-offset-33">{{product.price}} {{currency_symbol}}</div>
+              </div>
+              <div class="row" style="margin-top: 20px">
+                <div class="col-33">
+                  <div class="input-border-choice">
+                    <input type="text"
+                           placeholder="add your choice"
+                           style="height: 30px;width: 100px"
+                           ng-click="openDeliveryZone()"
+                           class="input-border">
+                  </div>
+
+                </div>
+                <div class="col-10 col-offset-10">
+                  <i class="ion-ios-information-outline"
+                     style="color: #28a54c; font-size: 35px"
+                     ng-click="openModal(product.id)"></i>
+                </div>
+                <div class="row col-offset-10" style="background-color: green;">
+                  <div class="col-10 col-offset-10">
+                    <i class="ion-android-remove"
+                       style="color: white; font-size: 20px"
+                       ng-click="minusCnt(product.price,product)"></i>
+                  </div>
+                  <div class="col-33 col-offset-20">
+                    <span style="color: white">{{product.cnt}}</span>
+                  </div>
+                  <div class="col-33 col-offset-10">
+                    <i class="ion-android-add"
+                       style="color:white; font-size: 20px"
+                       ng-click="plusCnt(product.price,product)"></i>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </tab-slide-box>
+        </div>
+
+          <!--<ion-scroll direction="x" style="overflow-x: visible">-->
+            <!--<a class="button"-->
+               <!--ng-repeat="product_category in product_categories"-->
+               <!--ng-class="{ active: isSetSubTab($index) }"-->
+               <!--ng-click="setSubTab($index)">-->
+              <!--{{product_category.product_category_name}}-->
+            <!--</a>-->
+          <!--</ion-scroll>-->
+    </div>
+
+
+    <div class="list" ng-show="isSetSubTab(1)">
+
+      <!--<div class="item" ng-repeat="product in products_two">-->
+        <!--<div class="row">-->
+          <!--<div class="col-33 col-offset-10">{{product.product_name}} <i class="ion-fireball" style="color: red; font-size: 20px"></i></div>-->
+
+          <!--<div class="col-33 col-offset-33">{{product.price}} {{currency_symbol}}</div>-->
+        <!--</div>-->
+        <!--<div class="row" style="margin-top: 20px">-->
+          <!--<div class="col-33">-->
+            <!--&lt;!&ndash;<div class="input-border-choice">&ndash;&gt;-->
+              <!--&lt;!&ndash;<input type="text"&ndash;&gt;-->
+                     <!--&lt;!&ndash;placeholder="add your choice"&ndash;&gt;-->
+                     <!--&lt;!&ndash;style="height: 30px;width: 100px"&ndash;&gt;-->
+                     <!--&lt;!&ndash;class="input-border">&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+          <!--</div>-->
+          <!--<div class="col-10 col-offset-10">-->
+            <!--<i class="ion-ios-information-outline"-->
+               <!--style="color: #28a54c; font-size: 35px"-->
+               <!--ng-click="openModal(product.id)"></i>-->
+          <!--</div>-->
+          <!--<div class="row col-offset-10" style="background-color: green;">-->
+            <!--<div class="col-10 col-offset-10">-->
+              <!--<i class="ion-android-remove"-->
+                 <!--style="color: white; font-size: 20px"-->
+                 <!--ng-click="minusStarterCnt(product.price)"></i>-->
+            <!--</div>-->
+            <!--<div class="col-33 col-offset-20">-->
+              <!--<span style="color: white">{{starterCnt}}</span>-->
+            <!--</div>-->
+            <!--<div class="col-33 col-offset-10">-->
+              <!--<i class="ion-android-add"-->
+                 <!--style="color:white; font-size: 20px"-->
+                 <!--ng-click="plusStarterCnt(product.price)"></i>-->
+            <!--</div>-->
+
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    </div>
+
+<style>
+  .active{
+    background:green;
+  }
+  .input-border{
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .input-border-choice{
+    border: 1px solid green;
+    border-radius: 1px;
+    background-color: white;
+  }
+  .button-border{
+    border-radius: 10px;
+  }
+</style>
+
+
+
+  </ion-content>
+</ion-view>

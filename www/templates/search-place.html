@@ -1,0 +1,21 @@
+<ion-view view-title="Search Place">
+  <ion-header-bar class="bar bar-subheader">
+    <div class="button-bar">
+        <label class="item item-input" style="width:inherit">
+          <input type="text" placeholder="Search"
+                 google-autocomplete-suggestion
+                 location="data.location"
+                 country-code="{{countryCode}}"
+                 on-selection="onAddressSelection(location)"
+                 ng-model="data.location.formatted_address"
+                 readonly required>
+        </label>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,109 @@
+<ion-view view-title="Confirm Order">
+<ion-content>
+  <div class="list">
+    <div class="item" ng-repeat="product in selectedProducts">
+      <div class="row">
+        <div class="col-40">
+          <div class="row">
+            <div class="col-33">
+
+              <button class="button button-outline button-stable"
+                      style="border-radius: 30%; width: 30px; height: 10px">
+                <i class="ion-android-remove"
+                   ng-click="minusCnt(product.price)"></i>
+              </button>
+
+            </div>
+            <div class="col-40">
+              <button class="button button-outline button-stable"
+                style="border-radius: 30px; width: 60px; z-index: 100; height: 10px; background-color: white">
+                {{product.cnt}}
+              </button>
+            </div>
+
+            <!--<div class="col-40" style="border: 1px solid black; border-radius:30%">-->
+              <!--<span style="color: black; margin-left: 10px">{{product.cnt}}</span>-->
+            <!--</div>-->
+            <div class="col-33">
+
+              <button class="button button-outline button-stable"
+                      style="border-radius: 30%; width: 30px; height: 10px">
+                <i class="ion-android-add"
+                ng-click="plusCnt(product.price)"></i>
+              </button>
+              <!--<i class="ion-android-add"-->
+                 <!--style="color:black; font-size: 20px; margin-left: 10px"-->
+                 <!--ng-click="plusCnt(product.price)"></i>-->
+            </div>
+
+          </div>
+        </div>
+        <div class="col-30 col-offset-10">
+          <h3>{{product.name}}</h3>
+        </div>
+        <div class="col-10 col-offset-10">
+          <h3>{{product.totalPrize}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="list">
+    <div class="item">
+      <div class="row">
+        <div>
+          <h3 style="margin-top: 120px">Address :</h3>
+        </div>
+        <div style="margin-left: 10px; margin-top: 100px">
+          <label class="item item-input">
+            <input type="text"
+                   placeholder="Enter the address here.."
+                   style="border-radius: 30px; border-color: green; border: 1px"
+            >
+          </label>
+        </div>
+        <div style="margin-top: 110px; margin-left: 10px">
+          <i class="icon ion-edit"
+             style="color: #28a54c; font-size: 20px;margin-top: 10px;margin-right: 10px;"></i>
+
+        </div>
+      </div>
+      <div class="row">
+        <div style="margin-top: 70px">
+          <h3>Instructions :</h3>
+        </div>
+        <div>
+          <label class="item item-input"
+                 style="margin-top: 50px">
+            <input type="text"
+                   placeholder="Enter the instruction here.."
+                   style="border-radius: 30px; border-color: green; border: 1px;"
+                   >
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="row">
+        <div class="col-offset-50">
+          <h3>Taxes & Fees :</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-offset-50">
+          <h3>Delivery Charges : {{delivery_charges}}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-offset-50">
+          <h3>Total Price :{{wholePrize}}</h3>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+  <div class="bar bar-footer bar-balanced">
+    <div class="title" ng-click="confirmOrder()">CONFIRM ORDER</div>
+  </div>
+</ion-view>

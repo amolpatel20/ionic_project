@@ -1,0 +1,22 @@
+<ion-pane>
+  <ion-header-bar class="bar-stable">
+
+  </ion-header-bar>
+  <ion-content>
+    <div class="list card">
+      <div class="item item-image">
+        <ion-scroll>
+          <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px">
+        </ion-scroll>
+
+      </div>
+    </div>
+    <div class="padding">
+      <button
+        class="button button-block button-positive"
+        ng-click="addImage()">
+        Take Picture
+      </button>
+    </div>
+  </ion-content>
+</ion-pane>

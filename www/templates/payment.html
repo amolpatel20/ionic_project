@@ -1,0 +1,53 @@
+<ion-view view-title="Payment">
+  <ion-content>
+    <div class="row" style="margin-top: 100px">
+      <p class="col-offset-25" style="color: grey">Please select type of payment</p>
+    </div>
+    <div class="row">
+      <ion-radio class="radio radio-inline radio-teal"
+                 ng-model="choice" ng-value="'payRestaurant'">Pay Restaurant Direct</ion-radio>
+      <ion-radio class="radio radio-inline radio-teal"
+                 ng-model="choice" ng-value="'payOnline'">Online Payment</ion-radio>
+    </div>
+    <div>
+      <div class="row">
+        <p class="col-offset-20" style="color: grey">Enter your card Number MM/YY/ CVV</p>
+      </div>
+      <div class="row">
+        <label class="item item-input"
+        style="width: inherit">
+          <input type="number" placeholder="1234 5678 1234 5678">
+        </label>
+      </div>
+      <div class="row" style="margin-top: 20px">
+        <div class="col-40">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Month
+            </div>
+            <select
+              ng-model="selectedDay"
+            ng-options="month for month in months">
+            </select>
+          </label>
+        </div>
+        <div class="col-40">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Year
+            </div>
+            <select
+              ng-model="selectedYear"
+              ng-options="year for year in years">
+            </select>
+          </label>
+        </div>
+        <div class= "col-30">
+          <label class="item item-input">
+            <input type="number" placeholder="CVC">
+          </label>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

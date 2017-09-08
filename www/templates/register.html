@@ -1,0 +1,64 @@
+<ion-header-bar class="bar-stable">
+  <h1 class="title">Registration</h1>
+</ion-header-bar>
+<ion-content>
+  <form ng-submit="registerUser()" method="post">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">First Name</span>
+        <input type="text"
+               ng-model="user.first_name"
+               placeholder="First Name">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Last Name</span>
+        <input type="text"
+               ng-model="user.last_name"
+               placeholder="Last Name">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">User Name</span>
+        <input type="text"
+               ng-model="user.username"
+               placeholder="User Name">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Address</span>
+        <input type="text"
+               ng-model="user.address"
+               placeholder="Address">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Email</span>
+        <input type="email"
+               ng-model="user.email"
+               placeholder="Email">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Password</span>
+        <input type="password"
+               ng-model="user.password"
+               placeholder="Password">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Confirm Password</span>
+        <input type="password"
+               ng-model="user.confirm_password" placeholder="Confirm Password">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Gender</span>
+        <input type="text"
+               ng-model="user.gender"
+               placeholder="Gender">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Phone no</span>
+        <input type="number"
+               ng-model="user.phone_no"
+               placeholder="Phone no">
+      </label>
+      <button class="button button-balanced register-button"
+              type="submit">Save</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-view view-title="Contact List">
+
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text"
+               placeholder="Search Contact"
+               ng-model="searchText"
+               ng-blur="searchContact(searchText)">
+      </label>
+    </div>
+    <div class="list">
+
+      <a class="item item-avatar" ng-repeat="contact in contacts">
+        <div ng-click="openSms(contact.phoneNumbers[1].value)">
+          <h3>{{contact.displayName}}</h3>
+          <p>{{contact.phoneNumbers[1].value}}</p>
+        </div>
+
+      </a>
+    </div>
+  </ion-content>
+</ion-view>
+

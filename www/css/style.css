@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+ion-item.item {
+  background: red;
+}
+.register-button{
+  margin-top: 30px;
+  margin-left: 100px;
+  width: 200px
+}

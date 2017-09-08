@@ -1,0 +1,24 @@
+<ion-view view-title="Restaurant List">
+
+  <ion-content>
+    <div class="list">
+
+      <a class="item item-avatar" ng-repeat="restaurant in restaurants">
+        <img
+             ng-src="{{imageName ? restaurantBaseUrl+restaurant.restaurant_image : 'img/ionic.png'}}"/>
+        <div ng-click="goTo(restaurant.id,restaurant.location.lat,restaurant.location.lng,restaurant.restaurant_name)">
+          <div class="row">
+            <div class="col-50">
+              <h3>{{restaurant.restaurant_name}}</h3>
+            </div>
+            <div class="col-33 col-offset-25">
+              <button class="button button-outline button-balanced button-small">
+                Following
+              </button>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>
